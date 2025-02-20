@@ -10,7 +10,7 @@ def test_create_booking():
     url = f"{BASE_URL}/booking"
     payload = get_booking_payload()
     
-    # Cambia `json=payload` a `data=payload` si `post_request` no usa `json`
+    # Change `json=payload` to `data=payload` if `post_request` doesn't use`json`
     response = post_request(url, payload, HEADERS)  
 
     assert response.status_code == 200, f"Error: {response.text}"

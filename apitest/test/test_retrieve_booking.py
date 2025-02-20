@@ -7,7 +7,6 @@ from apitest.utils.data_generator import get_booking_payload
 def test_retrieve_booking():
     """Validate booking retrieval by ID"""
 
-    # Crear una nueva reserva
     create_url = f"{BASE_URL}/booking"
     payload = get_booking_payload()
     create_response = post_request(create_url, payload, HEADERS)
@@ -16,7 +15,7 @@ def test_retrieve_booking():
     booking_id = create_response.json().get("bookingid")
     assert booking_id, "Booking ID not returned"
 
-    # Get los details of reserve
+    # Get details
     retrieve_url = f"{BASE_URL}/booking/{booking_id}"
     retrieve_response = get_request(retrieve_url, HEADERS)
 

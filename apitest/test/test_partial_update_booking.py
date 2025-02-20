@@ -4,15 +4,12 @@ from apitest.utils.data_generator import get_booking_payload
 from apitest.utils.request_helper import get_request, post_request, patch_request
 
 def test_partial_update_booking():
-    """Actualizar parcialmente una reserva con un token válido."""
-    # Obtener el token de autenticación
+    """Partial update."""
     token = get_auth_token()
 
-    # Actualizamos el header con el nuevo token
     headers_with_token = HEADERS.copy()
     headers_with_token["Cookie"] = f"token={token}"
 
-    # 1. Crear una reserva inicial para obtener un booking id
     url_create = f"{BASE_URL}/booking"
     payload = get_booking_payload()
     response_create = post_request(url_create, payload, headers_with_token)
@@ -21,14 +18,12 @@ def test_partial_update_booking():
     booking_id = response_create.json().get("bookingid")
     assert booking_id, "Booking ID not returned"
 
-    # 2. Actualizar parcialmente la reserva (solo un campo)
     url_update = f"{BASE_URL}/booking/{booking_id}"
-    updated_payload = {"firstname": "UpdatedFirstName"}  # Solo modificamos el nombre
+    updated_payload = {"firstname": "UpdatedFirstName"}
     response_update = patch_request(url_update, updated_payload, headers_with_token)
 
     assert response_update.status_code == 200, f"Error updating booking: {response_update.text}"
 
-    # 3. Verificar que solo el campo modificado ha cambiado
     response_retrieve = get_request(url_update, headers_with_token)
     assert response_retrieve.status_code == 200, f"Error retrieving booking: {response_retrieve.text}"
 

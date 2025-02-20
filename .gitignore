@@ -1,4 +1,4 @@
-# virtual env
+# Virtual environment
 venv/
 .env
 
@@ -6,10 +6,37 @@ venv/
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
 
 # pytest config
 .pytest_cache/
 
-# logs files
+# Logs files
 logs/
 *.log
+
+# PyCharm settings (si usas PyCharm)
+.idea/
+
+# VS Code settings (si usas VS Code)
+.vscode/
+
+# MyPy (para los tipos estáticos)
+.mypy_cache/
+
+# Coverage reports (si usas coverage)
+.coverage
+.coverage.*
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Linux trash files
+.Trash-*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# macOS file system files
+.DS_Store

@@ -9,7 +9,7 @@ def get_request(url, headers=None):
     return requests.get(url, headers=headers)
 
 def put_request(url, payload, headers):
-    """Realiza una solicitud PUT a la API."""
+    """Make a PUT request."""
     try:
         response = requests.put(url, json=payload, headers=headers)
         response.raise_for_status()

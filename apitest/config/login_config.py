@@ -3,5 +3,5 @@ HEADERS = {
 }
 
 def get_auth_payload(username, password):
-    """Devuelve el payload para autenticación"""
+    """Return payload for auth"""
     return {"username": username, "password": password}
